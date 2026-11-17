@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * 디자인 토큰 — "종이 육아수첩"
+ * 따뜻한 종이색 바탕, 잉크색 글자, 그림자 대신 얇은 괘선.
+ * 기록 종류마다 채도를 낮춘 색 하나씩만 쓴다.
+ */
+:root {
+  --radius: 0.625rem;
+
+  --background: #f4f1ea;
+  --foreground: #1d1c1a;
+  --card: #fbf9f5;
+  --card-foreground: #1d1c1a;
+  --popover: #fbf9f5;
+  --popover-foreground: #1d1c1a;
+  --primary: #1d1c1a;
+  --primary-foreground: #f7f4ee;
+  --secondary: #e9e4da;
+  --secondary-foreground: #1d1c1a;
+  --muted: #ebe6dc;
+  --muted-foreground: #6e685e;
+  --accent: #e9e4da;
+  --accent-foreground: #1d1c1a;
+  --destructive: #b23b2e;
+  --border: #ddd6c9;
+  --input: #d6cfc1;
+  --ring: #8a8273;
+
+  /* 기록 종류 */
+  --feed: #b7791f;
+  --feed-soft: #f1e3c8;
+  --diaper: #5f7a3d;
+  --diaper-soft: #e1e8d3;
+  --growth: #36658a;
+  --growth-soft: #d9e4ec;
+  --hospital: #b0473a;
+  --hospital-soft: #f1dcd6;
+  --sleep: #5b5f8f;
+  --sleep-soft: #e0e0ee;
+}
+
+.dark {
+  --background: #141311;
+  --foreground: #ebe6dc;
+  --card: #1c1a18;
+  --card-foreground: #ebe6dc;
+  --popover: #1f1d1a;
+  --popover-foreground: #ebe6dc;
+  --primary: #ebe6dc;
+  --primary-foreground: #161513;
+  --secondary: #262421;
+  --secondary-foreground: #ebe6dc;
+  --muted: #24221f;
+  --muted-foreground: #9a9387;
+  --accent: #2a2724;
+  --accent-foreground: #ebe6dc;
+  --destructive: #e0705f;
+  --border: #2d2a26;
+  --input: #3a3631;
+  --ring: #7a7366;
+
+  --feed: #e0a74e;
+  --feed-soft: #3a2d18;
+  --diaper: #9bb877;
+  --diaper-soft: #26301b;
+  --growth: #7fb0d6;
+  --growth-soft: #1c2a35;
+  --hospital: #e58a7c;
+  --hospital-soft: #3a211c;
+  --sleep: #a5a9dc;
+  --sleep-soft: #24253a;
+}
+
+@theme inline {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-feed: var(--feed);
+  --color-feed-soft: var(--feed-soft);
+  --color-diaper: var(--diaper);
+  --color-diaper-soft: var(--diaper-soft);
+  --color-growth: var(--growth);
+  --color-growth-soft: var(--growth-soft);
+  --color-hospital: var(--hospital);
+  --color-hospital-soft: var(--hospital-soft);
+  --color-sleep: var(--sleep);
+  --color-sleep-soft: var(--sleep-soft);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    letter-spacing: -0.01em;
+    overscroll-behavior-y: none;
+  }
+  button {
+    touch-action: manipulation;
+  }
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
